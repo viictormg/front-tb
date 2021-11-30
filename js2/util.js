@@ -45,10 +45,10 @@ const getCities = () => {
 const addAdress = () => {
   let index = document.getElementsByName("cities").length;
   data.address.push({ city: '', address: '' });
-  let card = `<div class="card mb-4 py-3">
-                            <div class="card-body">
-                                <h5 class="card-title mb-2">Punto de entrega ${index}</h5>
-                                <label for="">Ciudad</label>
+  let card = `<div class="card mb-4 py-3 shadow-sm">
+                                <div class="card-body">
+                                <button class="card-title btn btn-primary btn-sm float-end">X</button>
+                                <label for="">Ciudad de entrega ${index}</label>
                                 <select name="cities" onchange="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
                                 <p class="card-text">
                                     <label for="">Direccion</label>
