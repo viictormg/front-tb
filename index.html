@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid p-5">
         <div class="row">
-            <div class="col-12 col-sm-4 col-md-4 col-xl-4 border shadow pt-2">
+            <div class="col-12 col-sm-4 col-md-4 col-xl-4 border shadow py-5 px-4 rounded-3">
                 <form action="">
                     <label for="zones"><b>Zona</b></label>
                     <select name="" id="zones" class="form-control"></select>
@@ -41,15 +41,14 @@
                         <div id="directions">
                             <div class="card mb-2 shadow-sm">
                                 <div class="card-body">
-                                    <button class="card-title btn btn-primary btn-sm float-end">X</button>
                                     <label for="">Ciudad de Origen</label>
                                     <select name="cities" onchange="getAddress(value, 0, 'city')" id="cities-0"
                                         class="form-control ScrollMinimo"></select>
 
                                     <p class="card-text">
                                         <label for="">Direccion</label>
-                                        <input type="text" onchange="getAddress(value, 0, 'address')"
-                                            class="form-control" id="direccion-${index}" />
+                                        <input type="text" id="address-0" onchange="getAddress(value, 0, 'address')"
+                                            class="form-control"/>
                                     </p>
                                 </div>
                             </div>

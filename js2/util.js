@@ -44,19 +44,22 @@ const getCities = () => {
 
 const addAdress = () => {
   let index = document.getElementsByName("cities").length;
-  data.address.push({ city: '', address: '' });
-  let card = `<div class="card mb-4 py-3 shadow-sm">
-                                <div class="card-body">
-                                <button class="card-title btn btn-primary btn-sm float-end">X</button>
-                                <label for="">Ciudad de entrega ${index}</label>
-                                <select name="cities" onchange="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
-                                <p class="card-text">
-                                    <label for="">Direccion</label>
-                                    <input type="text" onchange="getAddress(value, ${index}), 'address' " class="form-control" id="direccion-${index}">
-                                </p>
-                            </div>
-                        </div>
-                `;
+  data.address.push({ city: "", address: "" });
+
+  let card = `<div id="cardAddress-${index}" class="card mb-4 py-3 shadow-sm">
+              <div class="card-body">
+              <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
+
+              <label for="">Ciudad de entrega ${index}</label>
+              <select name="cities" onchange="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
+              <p class="card-text">
+                  <label for="">Direccion</label>
+                  <input type="text" onchange="getAddress(value, ${index}), 'address'"   id="direccion-${index}" class="form-control">
+              </p>
+            </div>
+    </div>
+`;
+
   document.getElementById("directions").innerHTML += card;
 
   data.cities.forEach((element, i) => {
@@ -64,6 +67,12 @@ const addAdress = () => {
       `cities-${index}`
     ).innerHTML += `<option>${element}</option>`;
   });
+
+  data.address.forEach((e, i) => {
+    // document.getElementById(`${key}-${i}`).value = e[key]
+    console.log(e['city']);
+    console.log(e['address']);
+  })
 };
 
 const getAddress = (value, index, key) => {
@@ -82,9 +91,18 @@ const resetCities = () => {
   }
 };
 
+const dropAddress = index => {
+  document.getElementById(`cardAddress-${index}`).remove();
+  data.address.splice(index, 1);
+  console.log(data.address);
+};
+
 // INITIALS
 getZones();
 
 // GLOBALS
 window.getAddress = getAddress;
+window.dropAddress = dropAddress;
+window.resetCities = resetCities;
+
 window.data = data;
