@@ -37,7 +37,8 @@ const getCities = () => {
   })
     .then(res => res.json())
     .then(res => {
-      data.cities = Object.keys(res);
+      data.cities = ["seleccione..."].concat(Object.keys(res));
+      console.log();
       resetCities();
     });
 };
@@ -47,18 +48,17 @@ const addAdress = () => {
   data.address.push({ city: "", address: "" });
 
   let card = `<div id="cardAddress-${index}" class="card mb-4 py-3 shadow-sm">
-              <div class="card-body">
-              <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
+               <div class="card-body">
+                <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
 
-              <label for="">Ciudad de entrega ${index}</label>
-              <select name="cities" onchange="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
-              <p class="card-text">
-                  <label for="">Direccion</label>
-                  <input type="text" onchange="getAddress(value, ${index}), 'address'"   id="direccion-${index}" class="form-control">
-              </p>
-            </div>
-    </div>
-`;
+                <label for="">Ciudad de entrega ${index}</label>
+                <select name="cities" onblur="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
+                <p class="card-text">
+                    <label for="">Direccion</label>
+                    <input type="text" onblur="getAddress(value, ${index}, 'address'")   id="direccion-${index}" class="form-control">
+                </p>
+              </div>
+        </div>`;
 
   document.getElementById("directions").innerHTML += card;
 
@@ -68,11 +68,17 @@ const addAdress = () => {
     ).innerHTML += `<option>${element}</option>`;
   });
 
-  data.address.forEach((e, i) => {
-    // document.getElementById(`${key}-${i}`).value = e[key]
-    console.log(e['city']);
-    console.log(e['address']);
-  })
+  data.address.forEach((element, i) => {
+    if (element.city != null) {
+      console.log(element.city);
+      document.getElementById(`cities-${i}`).value = element.city;
+    }
+    if (element.address != null) {
+      document.getElementById(`address-${i}`).value = element.address;
+    }
+  });
+
+  console.log(data.address);
 };
 
 const getAddress = (value, index, key) => {
