@@ -55,7 +55,7 @@ const addAdress = () => {
                 <select name="cities" onblur="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
                 <p class="card-text">
                     <label for="">Direccion</label>
-                    <input type="text" onblur="getAddress(value, ${index}, 'address'")   id="direccion-${index}" class="form-control">
+                    <input type="text" onblur="getAddress(value, ${index}, 'address')" id="address-${index}" class="form-control">
                 </p>
               </div>
         </div>`;
@@ -70,18 +70,16 @@ const addAdress = () => {
 
   data.address.forEach((element, i) => {
     if (element.city != null) {
-      console.log(element.city);
       document.getElementById(`cities-${i}`).value = element.city;
     }
     if (element.address != null) {
       document.getElementById(`address-${i}`).value = element.address;
     }
   });
-
-  console.log(data.address);
 };
 
 const getAddress = (value, index, key) => {
+  console.log(key);
   data.address[index][key] = value;
 };
 
