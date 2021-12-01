@@ -17,8 +17,9 @@
                 <form action="">
                     <label for="zones"><b>Zona</b></label>
                     <select name="" id="zones" class="form-control"></select>
-                    <hr />
-
+                    <label for=""><b>Valor declarado</b></label>
+                        <input type="number" class="form-control">
+                    <hr/>
                     <label for=""><b>Tipo de Envio</b></label>
                     <div class="form-check form-check-inline">
                         <div class="form-check">
@@ -42,12 +43,12 @@
                             <div class="card mb-2 shadow-sm">
                                 <div class="card-body">
                                     <label for="">Ciudad de Origen</label>
-                                    <select name="cities" onchange="getAddress(value, 0, 'city')" id="cities-0"
+                                    <select name="cities" onchange="setAddress(value, 0, 'city')" id="cities-0"
                                         class="form-control ScrollMinimo"></select>
 
                                     <p class="card-text">
                                         <label for="">Direccion</label>
-                                        <input type="text" id="address-0" onchange="getAddress(value, 0, 'address')"
+                                        <input type="text" id="address-0" onchange="setAddress(value, 0, 'address')"
                                             class="form-control"/>
                                     </p>
                                 </div>

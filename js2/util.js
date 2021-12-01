@@ -1,3 +1,5 @@
+import { validateAddAddress } from "./validate.js";
+
 const URLS = {
   turboBoy: "https://aveonline.co/api/nal/v1.0/turboBoy/",
   citiesTB: "https://production.turboboy.co/api/v2/cities-by-zone?zone_id=",
@@ -52,10 +54,10 @@ const addAdress = () => {
                 <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
 
                 <label for="">Ciudad de entrega ${index}</label>
-                <select name="cities" onblur="getAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
+                <select name="cities" onblur="setAddress(value, ${index}, 'city')" id="cities-${index}" class="form-control"></select>
                 <p class="card-text">
                     <label for="">Direccion</label>
-                    <input type="text" onblur="getAddress(value, ${index}, 'address')" id="address-${index}" class="form-control">
+                    <input type="text" onblur="setAddress(value, ${index}, 'address')" id="address-${index}" class="form-control">
                 </p>
               </div>
         </div>`;
@@ -76,9 +78,11 @@ const addAdress = () => {
       document.getElementById(`address-${i}`).value = element.address;
     }
   });
+
+  console.log(validateAddAddress(index));
 };
 
-const getAddress = (value, index, key) => {
+const setAddress = (value, index, key) => {
   console.log(key);
   data.address[index][key] = value;
 };
@@ -105,7 +109,7 @@ const dropAddress = index => {
 getZones();
 
 // GLOBALS
-window.getAddress = getAddress;
+window.setAddress = setAddress;
 window.dropAddress = dropAddress;
 window.resetCities = resetCities;
 
