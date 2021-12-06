@@ -1,4 +1,5 @@
 import { validateAddAddress } from "./validate.js";
+import { quote } from './form.js'
 
 const URLS = {
   turboBoy: "https://aveonline.co/api/nal/v1.0/turboBoy/",
@@ -15,7 +16,7 @@ let data = {
 
 document.getElementById("zones").onchange = () => getCities();
 document.getElementById("addAdress").onclick = () => addAdress();
-document.getElementById("sendForm").onclick = () => sendForm();
+document.getElementById("sendForm").onclick = () => quote();
 
 const getZones = () => {
   fetch(URLS.turboBoy, {
@@ -109,40 +110,6 @@ const dropAddress = index => {
   console.log(data.address);
 };
 
-const sendForm = () => {
-  event.preventDefault();
-
-  let tipoPaquete =  document.getElementById("paquetes").checked;
-  console.log(tipoPaquete);
-
-  
-  const body = {
-    tipo: "cotizacion",
-    idEmpresa: 6077,
-    usuario: "demo",
-    clave: "Webservices",
-    retorno: true,
-    tipoPaquete: "1",
-    comentarios: "oee",
-    direcciones: [
-      {
-        ciudad: "medellin",
-        direccion: "calle 10 20 14",
-        referencia: "Universidad Nacional de Colombia",
-        contacto: "Miguel Mass",
-        infoAdicional: "There is no more information",
-      },
-      {
-        ciudad: "medellin",
-        direccion: "carrera 50 10 30",
-        referencia: "Universidad Nacional de Colombia",
-        contacto: "Miguel Mass",
-        infoAdicional: "There is no more information",
-      },
-    ],
-  };
-
-};
 
 // INITIALS
 getZones();
@@ -151,6 +118,6 @@ getZones();
 window.setAddress = setAddress;
 window.dropAddress = dropAddress;
 window.resetCities = resetCities;
-window.validateAddAddress = validateAddAddress;
+// window.validateAddAddress = validateAddAddress;
 
 window.data = data;
