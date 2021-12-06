@@ -3,6 +3,15 @@ const quote = () => {
 
   let tipoPaquete = document.getElementById("paquetes").checked;
 
+  let direcciones = [];
+
+  data.address.forEach(element => {
+    direcciones.push(element.value);
+  });
+
+
+  console.log(direccion.address);
+
   const body = {
     tipo: "cotizacion",
     idEmpresa: 6077,
@@ -13,8 +22,8 @@ const quote = () => {
     comentarios: "",
     direcciones: [
       {
-        ciudad: "",
-        direccion: "",
+        ciudad: direccion.city,
+        direccion: direccion.address,
         referencia: "",
         contacto: "",
         infoAdicional: "There is no more information",
