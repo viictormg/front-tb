@@ -7,9 +7,6 @@ const URLS = {
 
 //CONSUMIENDO AVRONLINE
 
-
-
-
 //CONSUMIENDO TURBOBOY
 let data = {
   cities: [],
@@ -18,6 +15,7 @@ let data = {
 
 document.getElementById("zones").onchange = () => getCities();
 document.getElementById("addAdress").onclick = () => addAdress();
+document.getElementById("sendForm").onclick = () => sendForm();
 
 const getZones = () => {
   fetch(URLS.turboBoy, {
@@ -53,9 +51,11 @@ const getCities = () => {
 
 const addAdress = () => {
   let index = document.getElementsByName("cities").length;
-  data.address.push({ city: "", address: "" });
+  let idElement = index - 1;
+  if (validateAddAddress(idElement)) {
+    data.address.push({ city: "", address: "" });
 
-  let card = `<div id="cardAddress-${index}" class="card mb-4 py-3 shadow-sm">
+    let card = `<div id="cardAddress-${index}" class="card mb-4 py-3 shadow-sm">
               <div class="card-body">
                 <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
 
@@ -68,28 +68,26 @@ const addAdress = () => {
               </div>
         </div>`;
 
-  document.getElementById("directions").innerHTML += card;
+    document.getElementById("directions").innerHTML += card;
 
-  data.cities.forEach((element, i) => {
-    document.getElementById(
-      `cities-${index}`
-    ).innerHTML += `<option>${element}</option>`;
-  });
+    data.cities.forEach((element, i) => {
+      document.getElementById(
+        `cities-${index}`
+      ).innerHTML += `<option>${element}</option>`;
+    });
 
-  data.address.forEach((element, i) => {
-    if (element.city != null) {
-      document.getElementById(`cities-${i}`).value = element.city;
-    }
-    if (element.address != null) {
-      document.getElementById(`address-${i}`).value = element.address;
-    }
-  });
-
-  console.log(validateAddAddress(index));
+    data.address.forEach((element, i) => {
+      if (element.city != null) {
+        document.getElementById(`cities-${i}`).value = element.city;
+      }
+      if (element.address != null) {
+        document.getElementById(`address-${i}`).value = element.address;
+      }
+    });
+  }
 };
 
 const setAddress = (value, index, key) => {
-  console.log(key);
   data.address[index][key] = value;
 };
 
@@ -111,6 +109,35 @@ const dropAddress = index => {
   console.log(data.address);
 };
 
+const sendForm = () => {
+  event.preventDefault();
+  const body = {
+    tipo: "cotizacion",
+    idEmpresa: 6077,
+    usuario: "demo",
+    clave: "Webservices",
+    retorno: true,
+    tipoPaquete: "1",
+    comentarios: "oee",
+    direcciones: [
+      {
+        ciudad: "medellin",
+        direccion: "calle 10 20 14",
+        referencia: "Universidad Nacional de Colombia",
+        contacto: "Miguel Mass",
+        infoAdicional: "There is no more information",
+      },
+      {
+        ciudad: "medellin",
+        direccion: "carrera 50 10 30",
+        referencia: "Universidad Nacional de Colombia",
+        contacto: "Miguel Mass",
+        infoAdicional: "There is no more information",
+      },
+    ],
+  };
+};
+
 // INITIALS
 getZones();
 
@@ -118,5 +145,6 @@ getZones();
 window.setAddress = setAddress;
 window.dropAddress = dropAddress;
 window.resetCities = resetCities;
+window.validateAddAddress = validateAddAddress;
 
 window.data = data;

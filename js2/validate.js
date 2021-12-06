@@ -1,11 +1,13 @@
-const validateAddAddress = (index) => {
-    if(index == 1){
-        return true
-    }else{
-        return false
-    }
-}
+const validateAddAddress = index => {
+    const city = document.getElementById(`cities-${index}`).value
+    const address = document.getElementById(`address-${index}`).value
 
-export {
-    validateAddAddress
-}
+    if (city != "" && address != "") {
+      return true;
+    } else {
+        alert("La ciudad y la direccion son obligatorias")
+      return false;
+    }
+};
+
+export { validateAddAddress };

@@ -14,7 +14,7 @@
     <div class="container-fluid p-5">
         <div class="row">
             <div class="col-12 col-sm-4 col-md-4 col-xl-4 border shadow py-5 px-4 rounded-3">
-                <form action="">
+                <form id="formQuote">
                     <label for="zones"><b>Zona</b></label>
                     <select name="" id="zones" class="form-control mb-3"></select>
                     <label for="valordeclarado"><b>Valor declarado</b></label>
@@ -68,12 +68,12 @@
                             <div class="card mb-2 shadow-sm">
                                 <div class="card-body">
                                     <label for="">Ciudad de Origen</label>
-                                    <select name="cities" onchange="setAddress(value, 0, 'city')" id="cities-0"
+                                    <select id="cities-0" name="cities" onchange="setAddress(value, 0, 'city')" 
                                         class="form-control ScrollMinimo"></select>
 
                                     <p class="card-text">
                                         <label for="">Direccion</label>
-                                        <input type="text" id="address-0" onchange="setAddress(value, 0, 'address')"
+                                        <input id="address-0" type="text" onchange="setAddress(value, 0, 'address')"
                                             class="form-control" />
                                     </p>
                                 </div>
@@ -83,6 +83,11 @@
                     <div class="d-grid gap-2 p-2">
                         <button type="button" id="addAdress" class="btn btn-primary btn-block">
                             Agregar direccion
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 p-2">
+                        <button type="button" id="sendForm" class="btn btn-secondary btn-block">
+                            Cotizar
                         </button>
                     </div>
                 </form>
