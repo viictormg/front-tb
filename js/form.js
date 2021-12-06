@@ -3,14 +3,13 @@ const quote = () => {
 
   let tipoPaquete = document.getElementById("paquetes").checked;
 
-  let direcciones = [];
-
-  data.address.forEach(element => {
-    direcciones.push(element.value);
+  let direcciones = data.address.map(e => {
+    return {
+      ciudad: e.city,
+      direccion: e.address,
+    };
   });
 
-
-  console.log(direccion.address);
 
   const body = {
     tipo: "cotizacion",
@@ -20,24 +19,8 @@ const quote = () => {
     retorno: true,
     tipoPaquete: tipoPaquete,
     comentarios: "",
-    direcciones: [
-      {
-        ciudad: direccion.city,
-        direccion: direccion.address,
-        referencia: "",
-        contacto: "",
-        infoAdicional: "There is no more information",
-      },
-      {
-        ciudad: "",
-        direccion: "",
-        referencia: "",
-        contacto: "",
-        infoAdicional: "",
-      },
-    ],
+    direcciones
   };
-
 
   console.log(body);
 };
