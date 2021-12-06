@@ -16,25 +16,50 @@
             <div class="col-12 col-sm-4 col-md-4 col-xl-4 border shadow py-5 px-4 rounded-3">
                 <form action="">
                     <label for="zones"><b>Zona</b></label>
-                    <select name="" id="zones" class="form-control"></select>
-                    <label for=""><b>Valor declarado</b></label>
-                        <input type="number" class="form-control">
-                    <hr/>
-                    <label for=""><b>Tipo de Envio</b></label>
-                    <div class="form-check form-check-inline">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipoEnvio" id="paquetes" />
-                            <label class="form-check-label" for="paquetes">
-                                Paquetes
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipoEnvio" id="documentos" checked />
-                            <label class="form-check-label" for="documentos">
-                                Documentos
-                            </label>
+                    <select name="" id="zones" class="form-control mb-3"></select>
+                    <label for="valordeclarado"><b>Valor declarado</b></label>
+                    <input name="" id="valordeclarado" type="number" class="form-control">
+                    <hr />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="TamañoletraInputCheck"><b>Tipo</b></label><br>
+                                <div class="form-check form-check-inline">
+                                    <div class="form-check TamañoletraInputCheck">
+                                        <input class="form-check-input" type="radio" name="tipoEnvio" id="paquetes" />
+                                        <label class="form-check-label" for="paquetes">
+                                            Paquetes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <div class="form-check TamañoletraInputCheck">
+                                        <input class="form-check-input" type="radio" name="tipoEnvio" id="documentos"/>
+                                        <label class="form-check-label" for="documentos">
+                                            Documentos
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="TamañoletraInputCheck"><b>Trámites</b></label><br>
+                                <div class="form-check form-check-inline">
+                                    <div class="form-check TamañoletraInputCheck">
+                                        <input class="form-check-input" type="radio" name="tramites" id="si" />
+                                        <label class="form-check-label" for="si">
+                                            Si
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <div class="form-check TamañoletraInputCheck">
+                                        <input class="form-check-input" type="radio" name="tramites" id="no"/>
+                                        <label class="form-check-label" for="no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <section>
@@ -49,7 +74,7 @@
                                     <p class="card-text">
                                         <label for="">Direccion</label>
                                         <input type="text" id="address-0" onchange="setAddress(value, 0, 'address')"
-                                            class="form-control"/>
+                                            class="form-control" />
                                     </p>
                                 </div>
                             </div>

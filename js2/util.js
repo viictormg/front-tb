@@ -5,6 +5,12 @@ const URLS = {
   citiesTB: "https://production.turboboy.co/api/v2/cities-by-zone?zone_id=",
 };
 
+//CONSUMIENDO AVRONLINE
+
+
+
+
+//CONSUMIENDO TURBOBOY
 let data = {
   cities: [],
   address: [{ city: "", address: "" }],
@@ -50,7 +56,7 @@ const addAdress = () => {
   data.address.push({ city: "", address: "" });
 
   let card = `<div id="cardAddress-${index}" class="card mb-4 py-3 shadow-sm">
-               <div class="card-body">
+              <div class="card-body">
                 <button type="button" onclick="dropAddress(${index})" class="card-title btn btn-primary btn-sm float-end">X</button>
 
                 <label for="">Ciudad de entrega ${index}</label>

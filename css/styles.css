@@ -35,3 +35,9 @@
 .ScrollMinimo::-webkit-scrollbar-track {
   border-radius: 10px;
 }
+
+
+.TamañoletraInputCheck{
+  font-size: 12px;
+
+}
