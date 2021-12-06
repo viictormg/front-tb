@@ -111,6 +111,9 @@ const dropAddress = index => {
 
 const sendForm = () => {
   event.preventDefault();
+
+  let tipoPaquete =  getElementById("paquetes").value;
+  console.log(tipoPaquete);
   const body = {
     tipo: "cotizacion",
     idEmpresa: 6077,
@@ -136,6 +139,7 @@ const sendForm = () => {
       },
     ],
   };
+
 };
 
 // INITIALS

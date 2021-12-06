@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <div class="form-check TamañoletraInputCheck">
-                                        <input class="form-check-input" type="radio" name="tipoEnvio" id="documentos"/>
+                                        <input class="form-check-input" type="radio" name="tipoEnvio" id="documentos" />
                                         <label class="form-check-label" for="documentos">
                                             Documentos
                                         </label>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <div class="form-check TamañoletraInputCheck">
-                                        <input class="form-check-input" type="radio" name="tramites" id="no"/>
+                                        <input class="form-check-input" type="radio" name="tramites" id="no" />
                                         <label class="form-check-label" for="no">
                                             No
                                         </label>
@@ -68,12 +68,17 @@
                             <div class="card mb-2 shadow-sm">
                                 <div class="card-body">
                                     <label for="">Ciudad de Origen</label>
-                                    <select id="cities-0" name="cities" onchange="setAddress(value, 0, 'city')" 
+                                    <select id="cities-0" name="cities" onchange="setAddress(value, 0, 'city')"
                                         class="form-control ScrollMinimo"></select>
 
                                     <p class="card-text">
                                         <label for="">Direccion</label>
                                         <input id="address-0" type="text" onchange="setAddress(value, 0, 'address')"
+                                            class="form-control" />
+                                    </p>
+                                    <p class="card-text">
+                                        <label for="">referencia</label>
+                                        <input id="reference-0" type="text" onchange="setAddress(value, 0, 'reference')"
                                             class="form-control" />
                                     </p>
                                 </div>
